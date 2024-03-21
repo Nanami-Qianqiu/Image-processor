@@ -19,9 +19,9 @@
 namespace filter {
 class Filter {
 public:
-    Filter();
+    Filter() = default;
     explicit Filter(const std::vector<std::string>& args);
-    virtual ~Filter();
+    virtual ~Filter() = default;
     virtual Image Apply(const Image& image) const = 0;
     const std::vector<std::string>& GetArgs() const;
 
@@ -32,7 +32,7 @@ protected:
     template <typename T>
     std::vector<T> GetPixColor(const std::vector<std::vector<T>>& matrix, const Image& image, size_t x, size_t y) const;
 
-    static std::chrono::time_point<std::chrono::system_clock> start_time;
+
 };
 
 class Negative : public Filter {

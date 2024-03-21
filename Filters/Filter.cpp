@@ -11,16 +11,6 @@ const std::vector<std::string> &filter::Filter::GetArgs() const {
     return args_;
 }
 
-filter::Filter::Filter() {
-    start_time = std::chrono::system_clock::now();
-    std::cout << "Filter started" << std::endl;
-}
-filter::Filter::~Filter() {
-        std::chrono::time_point<std::chrono::system_clock> end_time = std::chrono::system_clock::now();
-        std::chrono::duration<double> elapsed_seconds = end_time - start_time;
-        std::cout << "Filter finished in " << elapsed_seconds.count() << " seconds" << std::endl;
-}
-
 std::unique_ptr<filter::Filter> filter::GetFilter(const parser::Token &token) {
     const std::string &name = token.name;
     if (name == "-neg") {
